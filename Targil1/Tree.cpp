@@ -77,16 +77,18 @@ void Tree::process(Node* p)
 
 void Tree::deleteAllSubTree(Node* t, Node* p)
 {
-	auto it = t->answersList.begin();
-	for (it; it != t->answersList.end(); it++)
-	{
-		deleteAllSubTree((**it).son, t);
-		delete (*it);
-	}
-	if (it == t->answersList.end()) {
-		t->answersList.clear();
-		if (t != p)
-			delete t;
+	if (t) {
+		auto it = t->answersList.begin();
+		for (it; it != t->answersList.end(); it++)
+		{
+			deleteAllSubTree((**it).son, t);
+			delete (*it);
+		}
+		if (it == t->answersList.end()) {
+			t->answersList.clear();
+			if (t != p)
+				delete t;
+		}
 	}
 }
 
