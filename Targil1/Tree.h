@@ -18,7 +18,8 @@ public:
 	Tree() { root = NULL; }
 	~Tree() {
 		deleteAllSubTree(root,root);
-		delete root;
+		if(root)
+			delete root;
 		root = 0;
 	}
 	void deleteAllSubTree(Node* t, Node* p);
