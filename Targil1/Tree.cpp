@@ -116,7 +116,8 @@ bool Tree::addSon(string fatherquestion, string newanswer, string newval)
 void Tree::deleteSubTree(string val)
 {
 	Node* tmp = nullptr;
-	tmp	= search(root, val, root);
+	Node* parent = root;
+	tmp	= search(root, val, parent);
 	if (tmp) {
 		deleteAllSubTree(tmp,tmp);
 		tmp->isLeaf = true;
