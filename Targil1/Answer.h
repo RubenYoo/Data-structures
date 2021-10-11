@@ -6,7 +6,6 @@ using namespace std;
 
 class Node;
 
-//Answer: for each answer, the string, and the pointer to the node where to continue
 class Answer
 {
 public:
