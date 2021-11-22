@@ -15,7 +15,7 @@ protected:
 		TrieNode* children[ALPHABET] = { 0 };
 		TrieNode* father;
 		bool isEndWord = false;
-		int isLeaf = true;
+		bool isLeaf = true;
 		TrieNode() {};
 	};
 	TrieNode* root;
