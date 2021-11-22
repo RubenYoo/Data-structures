@@ -88,7 +88,7 @@ bool Trie::printAllWordsFromPrefix(string str)
 		else
 			break;
 	}
-	return true;
+	return false;
 }
 
 void Trie::printAllWordsFromPrefix(string str, TrieNode* node)
