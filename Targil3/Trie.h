@@ -21,6 +21,7 @@ protected:
 	TrieNode* root;
 public:
 	Trie() { root = new TrieNode(); };
+	~Trie() { deleteAllTheTree(root); };
 	
 	void insertWord(string str);
 	bool deleteWord(string str);
@@ -28,6 +29,8 @@ public:
 	bool printAllWordsFromPrefix(string str);
 private:
 	void printAllWordsFromPrefix(string str, TrieNode* node);
+	bool checkIfLeaf(TrieNode* node);
+	void deleteAllTheTree(TrieNode* node);
 };
 
 
