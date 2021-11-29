@@ -25,8 +25,8 @@ bool Trie::deleteWord(string str)
 		return false;
 
 	TrieNode* node = root;
-	TrieNode* tmp;
-
+	int j = str.length() - 1;
+								
 	for (int i = 0; i < str.length(); i++)
 	{
 		if (node->children[(int)str[i] - 97] != 0)
@@ -36,7 +36,6 @@ bool Trie::deleteWord(string str)
 				break;
 		}
 	}
-
 	while (node != root)
 	{
 		if (!node->isLeaf) {
@@ -45,10 +44,13 @@ bool Trie::deleteWord(string str)
 		}
 		else
 		{
-			tmp = node;
 			node = node->father;
-			delete tmp;
+			delete node->children[(int)str[j] - 97];
+			node->children[(int)str[j] - 97] = 0;
+			if(checkIfLeaf(node))
+				node->isLeaf = true;
 		}
+		j--;
 	}
 
 	return true;
@@ -108,5 +110,25 @@ void Trie::printAllWordsFromPrefix(string str, TrieNode* node)
 	}
 	if (node->isEndWord)
 		cout << str << endl;
+}
+
+bool Trie::checkIfLeaf(TrieNode* node)
+{
+	for (int i = 0; i < ALPHABET; i++)
+		if (node->children[i] != 0)
+			return false;
+	return true;
+}
+
+void Trie::deleteAllTheTree(TrieNode* node)
+{
+	for (int i = 0; i < ALPHABET; i++)
+	{
+		if (node != NULL) {
+			if (node->children[i] != 0)
+				deleteAllTheTree(node->children[i]);
+		}
+	}
+	delete node;
 }
 
